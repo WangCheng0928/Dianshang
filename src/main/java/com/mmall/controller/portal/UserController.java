@@ -32,7 +32,7 @@ public class UserController {
      */
     @RequestMapping(value = "login.do",method = RequestMethod.POST)
     @ResponseBody //作用：在返回时自动通过springmvc的json插件将返回值序列化成json
-    public ServerReponse<User> login(String username, String password, HttpSession session, HttpServletResponse httpServletResponse, HttpServletRequest request){
+    public ServerReponse<User> login(String username, String password, HttpSession session, HttpServletResponse httpServletResponse){
         //service--mybatis--dao
         ServerReponse<User> reponse=iUserService.login(username,password);
         if(reponse.isSuccess()){
