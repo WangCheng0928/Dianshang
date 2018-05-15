@@ -40,6 +40,7 @@ public class CookieUtil {
                 log.info("read cookieName:{},cookieValue:{}", cookie.getName(), cookie.getValue());
                 if (StringUtils.equals(cookie.getName(), COOKIE_NAME)){
                     log.info("return cookieName:{}, cookieValue:{}", cookie.getName(), cookie.getValue());
+                    return cookie.getValue();
                 }
             }
         }
@@ -50,7 +51,7 @@ public class CookieUtil {
         Cookie cookie = new Cookie(COOKIE_NAME, token);
         cookie.setDomain(COOKIE_DOMAIN);
         cookie.setPath("/");   // 代表设置在根目录
-
+        cookie.setHttpOnly(true);
         //单位是秒
         //如果这个maxage不设置的话，cookie就不会写入硬盘，而是写在内存。只在当前页面有效
         cookie.setMaxAge(60 * 60 * 24 * 365);   //如果是-1，代表永久
