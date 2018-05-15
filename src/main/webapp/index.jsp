@@ -2,15 +2,9 @@
 <html >
     <%@ page language="java"  contentType="text/html; charset=UTF-8" %>
 <body>
-<<<<<<< HEAD
 <h2>tomcat1!</h2>
 <h2>tomcat1!</h2>
 <h2>tomcat1!</h2>
-=======
-<h2>tomcat2!</h2>
-<h2>tomcat2!</h2>
-<h2>tomcat2!</h2>
->>>>>>> 9fd62bd2fa11e337c18b53b0fbc11dbc7d49f00e
 <h2>Hello World!</h2>
 
 springmvc上传文件
