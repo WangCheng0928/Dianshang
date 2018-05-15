@@ -1,6 +1,7 @@
 package com.mmall.common;
 
 import com.mmall.util.PropertiesUtil;
+import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -9,6 +10,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * @Author: wangcheng
  * @Date: Created in 10:38 2018/5/14
  */
+@Slf4j
 public class RedisPool {
 
     private static JedisPool pool;   //jedis连接池

@@ -15,7 +15,6 @@ public class RedisPoolUtil {
     public static Long expire(String key, int exTime){
         Jedis jedis = null;
         Long result = null;
-
         try {
             jedis = RedisPool.getJedis();
             result = jedis.expire(key, exTime);
@@ -80,7 +79,6 @@ public class RedisPoolUtil {
     public static Long del(String key){
         Jedis jedis = null;
         Long result = null;
-
         try {
             jedis = RedisPool.getJedis();
             result = jedis.del(key);
