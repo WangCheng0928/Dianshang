@@ -9,19 +9,11 @@
             <level>DEBUG</level>
         </filter>
     </appender>
-
     <appender name="mmall" class="ch.qos.logback.core.rolling.RollingFileAppender">
-<<<<<<< HEAD
-        <File>G:/mmalllog/mmall.log</File>
-        <!--<File>/developer/apache-tomcat-7.0.82/logs/mmall.log</File>-->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>G:/mmalllog/mmall.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
-=======
         <File>F:/mmalllog/mmall.log</File>
         <!--<File>/developer/apache-tomcat-7.0.82/logs/mmall.log</File>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>F:/mmalllog/mmall.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
->>>>>>> 9fd62bd2fa11e337c18b53b0fbc11dbc7d49f00e
             <append>true</append>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
@@ -30,19 +22,11 @@
         </encoder>
     </appender>
 
-
     <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-<<<<<<< HEAD
-        <File>G:/mmalllog/error.log</File>
-        <!--<File>/developer/apache-tomcat-7.0.82/logs/error.log</File>-->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>G:/mmalllog/error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
-=======
         <File>F:/mmalllog/error.log</File>
         <!--<File>/developer/apache-tomcat-7.0.82/logs/error.log</File>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>F:/mmalllog/error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
->>>>>>> 9fd62bd2fa11e337c18b53b0fbc11dbc7d49f00e
             <!--<fileNamePattern>d:/mmalllog/error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>-->
             <append>true</append>
             <maxHistory>10</maxHistory>
