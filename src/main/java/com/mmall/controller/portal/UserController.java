@@ -8,6 +8,7 @@ import com.mmall.service.IUserService;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
 import com.mmall.util.RedisPoolUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,11 +33,7 @@ public class UserController {
      */
     @RequestMapping(value = "login.do",method = RequestMethod.POST)
     @ResponseBody //作用：在返回时自动通过springmvc的json插件将返回值序列化成json
-<<<<<<< HEAD
-    public ServerReponse<User> login(String username, String password, HttpSession session, HttpServletResponse httpServletResponse, HttpServletRequest request){
-=======
     public ServerReponse<User> login(String username, String password, HttpSession session, HttpServletResponse httpServletResponse){
->>>>>>> 9fd62bd2fa11e337c18b53b0fbc11dbc7d49f00e
         //service--mybatis--dao
         ServerReponse<User> reponse=iUserService.login(username,password);
         if(reponse.isSuccess()){
@@ -47,10 +44,12 @@ public class UserController {
         return reponse;
     }
 
-    @RequestMapping(value = "loginout.do",method = RequestMethod.POST)
+    @RequestMapping(value = "logout.do",method = RequestMethod.POST)
     @ResponseBody
-    public ServerReponse<String> loginout(HttpSession session){
-        session.removeAttribute(Const.CURRENT_USER);
+    public ServerReponse<String> loginout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        String loginToken = CookieUtil.readLoginToken(httpServletRequest);
+        CookieUtil.delLoginToken(httpServletRequest, httpServletResponse);
+        RedisPoolUtil.del(loginToken);
         return ServerReponse.createBySuccess("退出成功");
     }
 
@@ -71,8 +70,14 @@ public class UserController {
 
     @RequestMapping(value = "get_user_info.do",method = RequestMethod.POST)
     @ResponseBody
-    public ServerReponse<User> getUserInfo(HttpSession session){
-        User user= (User) session.getAttribute(Const.CURRENT_USER);
+    public ServerReponse<User> getUserInfo(HttpServletRequest httpServletRequest){
+//        User user= (User) session.getAttribute(Const.CURRENT_USER);
+        String loginToken  = CookieUtil.readLoginToken(httpServletRequest);
+        if (StringUtils.isEmpty(loginToken)){
+            return ServerReponse.createByErrorMessage("用户未登录，无法获取当前用户的信息");
+        }
+        String userJsonstr = RedisPoolUtil.get(loginToken);
+        User user = JsonUtil.string2Obj(userJsonstr, User.class);
         if(user!=null){
             return ServerReponse.createBySuccess(user);
         }
