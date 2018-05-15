@@ -86,10 +86,6 @@ public class CartServiceImpl implements ICartService {
         return ServerReponse.createBySuccess(cartMapper.selectCartProductCount(userId));
     }
 
-
-
-
-
     private CartVo getCartVoinit(Integer useId){
         CartVo cartVo=new CartVo();
         List<Cart> cartList=cartMapper.selectCartByUserId(useId);
