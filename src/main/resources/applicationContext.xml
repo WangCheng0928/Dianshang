@@ -19,7 +19,7 @@
 
 
     <!--把当前的spring容器的配置文件做一个分离，分离出来一个datasource.xml-->
+    <import resource="applicationContext-spring-session.xml"/>
     <import resource="applicationContext-datasource.xml"/>
-
 
 </beans>
