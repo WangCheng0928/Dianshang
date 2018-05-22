@@ -9,7 +9,9 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--包扫描，扫描controller注解，注解加在类上就是一个controller-->
-    <context:component-scan base-package="com.mmall" annotation-config="true"/>
+    <context:component-scan base-package="com.mmall" annotation-config="true" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!--编码配置-->
     <mvc:annotation-driven>
@@ -41,6 +43,20 @@
         <property name="maxInMemorySize" value="4096" />
         <property name="defaultEncoding" value="UTF-8"></property>
     </bean>
+
+    <mvc:interceptors>
+        <!-- 定义在这里的， 所有的都会拦截-->
+        <!-- <bean class=""/> -->
+        <mvc:interceptor>
+            <!--manage/a.do    /manage/*-->
+            <!--manage/b.do    /manage/*-->
+            <!--manage/product/a.do    /manage/**-->
+            <!--manage/order/b.do    /manage/**-->
+            <mvc:mapping path="/manage/**"/>
+            <!--<mvc:exclude-mapping path="/manage/user/login.do"/>-->
+            <bean class="com.mmall.controller.common.interceptor.AuthorityInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>
