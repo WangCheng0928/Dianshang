@@ -3,11 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="
-     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!--扫描com.mmall包下面的注解，很方便的在类中做一个注入-->
     <context:component-scan base-package="com.mmall" annotation-config="true">
@@ -18,6 +18,9 @@
 
     <context:property-placeholder location="classpath:datasource.properties" />
 
+    <!-- 二期新增spring schedule的时候新增的 -->
+    <context:property-placeholder location="classpath:datasource.properties"/>
+    <task:annotation-driven/>
 
     <!--把当前的spring容器的配置文件做一个分离，分离出来一个datasource.xml-->
     <import resource="applicationContext-spring-session.xml"/>
