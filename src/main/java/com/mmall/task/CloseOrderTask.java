@@ -55,7 +55,7 @@ public class CloseOrderTask {
     @Scheduled(cron = "0 */1 * * * ?")
     public void closeOrderTask3(){
         log.info("关闭订单定时任务启动");
-        long lockTimeout = Long.parseLong(PropertiesUtil.getProperty("lock.timeout"));
+        long lockTimeout = Long.parseLong(PropertiesUtil.getProperty("lock.timeout", "5000"));
         Long setnxResult = RedisShardedPoolUtil.setnx(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK, String.valueOf(System.currentTimeMillis() + lockTimeout));
         if (setnxResult != null && setnxResult.intValue() == 1){
             //如果返回值是1,代表设置成功,获取锁
@@ -70,7 +70,7 @@ public class CloseOrderTask {
                 //返回给定的key的旧值, --->旧值判断,是否可以获取锁
                 //当key没有旧值时,即key不存在时,返回nil ---> 获取锁
                 //这里我们set了一个新的value值,获取旧的值。
-                if (getSetResult == null || (StringUtils.equals(lockValueStr, getSetResult))){
+                if (getSetResult == null || (getSetResult != null && StringUtils.equals(lockValueStr, getSetResult))){
                     //真正获取到锁
                     closeOrder(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK);
                 }else {
