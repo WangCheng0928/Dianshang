@@ -65,29 +65,29 @@
 
     <!-- alipay  -->
     <!-- alipay -->
-    <dependency>
-      <groupId>alipay-sdk-java</groupId>
-      <artifactId>alipay-sdk-java.demo</artifactId>
-      <version>1.0</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>alipay-sdk-java</groupId>-->
+      <!--<artifactId>alipay-sdk-java.demo</artifactId>-->
+      <!--<version>1.0</version>-->
+    <!--</dependency>-->
 
-    <dependency>
-      <groupId>alipay-sdk-java-source</groupId>
-      <artifactId>alipay-sdk-java-source.demo</artifactId>
-      <version>1.0</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>alipay-sdk-java-source</groupId>-->
+      <!--<artifactId>alipay-sdk-java-source.demo</artifactId>-->
+      <!--<version>1.0</version>-->
+    <!--</dependency>-->
 
-    <dependency>
-      <groupId>alipay-trade-sdk</groupId>
-      <artifactId>alipay-trade-sdk.demo</artifactId>
-      <version>1.0</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>alipay-trade-sdk</groupId>-->
+      <!--<artifactId>alipay-trade-sdk.demo</artifactId>-->
+      <!--<version>1.0</version>-->
+    <!--</dependency>-->
 
-    <dependency>
-      <groupId>alipay-trade-sdk-source</groupId>
-      <artifactId>alipay-trade-sdk-source.demo</artifactId>
-      <version>1.0</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>alipay-trade-sdk-source</groupId>-->
+      <!--<artifactId>alipay-trade-sdk-source.demo</artifactId>-->
+      <!--<version>1.0</version>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>org.mybatis</groupId>
