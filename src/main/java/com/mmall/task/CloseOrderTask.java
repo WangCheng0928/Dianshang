@@ -95,7 +95,7 @@ public class CloseOrderTask {
         boolean getlock = false;
         try {
             //获取锁 等待2秒，5秒后释放
-            if (getlock = lock.tryLock(1, 50, TimeUnit.SECONDS)) {
+            if (getlock = lock.tryLock(0, 50, TimeUnit.SECONDS)) {
                 log.info("Redisson获取分布式锁:{},ThreadName:{}",Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK,Thread.currentThread().getName());
                 int hour = Integer.parseInt(PropertiesUtil.getProperty("close.order.tast.time.hour"));
                 //iOrderService.closeOrder(hour);
