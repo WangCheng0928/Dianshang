@@ -22,7 +22,7 @@ public class UserManagerController {
     @Autowired
     private IUserService iUserService;
 
-    @RequestMapping(value = "login.do",method = RequestMethod.GET)
+    @RequestMapping(value = "login.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerReponse<User> login(String username, String password, HttpSession session, HttpServletResponse httpServletResponse){
         ServerReponse<User> reponse=iUserService.login(username,password);
