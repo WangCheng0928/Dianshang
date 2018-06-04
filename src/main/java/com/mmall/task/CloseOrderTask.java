@@ -99,6 +99,8 @@ public class CloseOrderTask {
                 log.info("Redisson获取分布式锁:{},ThreadName:{}",Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK,Thread.currentThread().getName());
                 int hour = Integer.parseInt(PropertiesUtil.getProperty("close.order.tast.time.hour"));
                 //iOrderService.closeOrder(hour);
+            }else {
+                log.info("Redisson没有获取到分布式锁:{}, ThreadName:{}", Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK,Thread.currentThread().getName());
             }
         } catch (InterruptedException e) {
             log.error("Redisson分布式锁获取异常", e);
